@@ -53,15 +53,15 @@ export class Tab2Page {
 
     console.log(id);
 
-    // // show loader
-    // const loader = await this.loadingCtrl.create({
-    //   message: 'Please wait...'
-    // });
-    // loader.present();
+    // show loader
+    const loader = await this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    loader.present();
 
-    // await this.firestore.doc('games/' + id).delete();
-    // // dismiss loader
-    // loader.dismiss();
+    await this.firestore.doc('games/' + id).delete();
+    // dismiss loader
+    loader.dismiss();
   }
 
   async getGames() {

@@ -27,9 +27,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   async login(user: User) {
-    // console.log(user);
 
-    this.router.navigate(['/tabs']);
+    // this.router.navigate(['/tabs']);
 
 
     if (this.formValidation()) {
@@ -42,21 +41,21 @@ export class LoginPage implements OnInit {
       loader.present();
 
 
-      // try {
-      //   // login user with email and password
-      //   await this.afAuth.signInWithEmailAndPassword(user.email, user.password)
-      //     .then(data => {
-      //       console.log(data);
+      try {
+        // login user with email and password
+        await this.afAuth.signInWithEmailAndPassword(user.email, user.password)
+          .then(data => {
+            console.log(data);
 
-      //       // redirect to home page
-      //       // this.navCtrl.navigateRoot('home');
-      //       this.dismiss();
-      //       this.router.navigate(['/tabs']);
-      //     })
-      //     .catch();
-      // } catch (e) {
-      //   this.showToast(e);
-      // }
+            // redirect to home page
+            // this.navCtrl.navigateRoot('home');
+            this.dismiss();
+            this.router.navigate(['/tabs']);
+          })
+          .catch();
+      } catch (e) {
+        this.showToast(e);
+      }
 
       // dismis loader
       loader.dismiss();
