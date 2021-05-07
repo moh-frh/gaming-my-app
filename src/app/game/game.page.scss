@@ -1,0 +1,48 @@
+.bg-img {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), #222428), url("https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.img-header {
+    display: flex;
+    justify-content: center;
+}
+
+.img-header img {
+    height: 200px;
+}
+
+.tags {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tags p {
+    color: #9E9E9E;
+    font-weight: 500;
+    font-size: small;
+}
+
+.tags .green {
+    color: #6ed86e;
+}
+
+ion-card.adv-map p {
+    font-size: 0.7em !important;
+}
+
+button[fab].fab-map {
+    top: calc(100% - 35px);
+    z-index: 50;
+}
+
+.item-bold {
+    font-weight: bold;
+}
+
+ion-content.cards-bg {
+    background-color: #f4f4f7;
+}

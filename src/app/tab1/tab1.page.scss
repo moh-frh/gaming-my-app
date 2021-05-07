@@ -1,0 +1,19 @@
+.scroll-box {
+    display: flex;
+    overflow: scroll;
+}
+
+.box-title {
+    // color: black;
+    margin: 10px 0px 5px 5px;
+    font-weight: 500;
+}
+
+.game {
+    margin-left: 5px;
+}
+
+.game img {
+    height: 150px;
+    max-width: none;
+}
