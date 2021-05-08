@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 import {
   LoadingController,
   ModalController,
   Platform,
   ToastController,
 } from '@ionic/angular';
-import * as firebase from 'firebase';
 import { AddGamePage } from '../add-game/add-game.page';
 import { EditGamePage } from '../edit-game/edit-game.page';
 import { GamePage } from '../game/game.page';
@@ -26,8 +26,14 @@ export class Tab2Page {
     private firestore: AngularFirestore,
     private loadingCtrl: LoadingController,
     private platform: Platform,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private router: ActivatedRoute,
   ) {}
+
+  getCurrentUser(){
+    console.log(this.afAuth.currentUser);
+     
+  }
 
   async openMovie() {
     const modal = await this.modalController.create({
