@@ -45,15 +45,15 @@ export class LoginPage implements OnInit {
         // login user with email and password
         await this.afAuth.signInWithEmailAndPassword(user.email, user.password)
           .then(data => {
-            console.log("user auth");
+            // console.log("user auth");
             
-            console.log(data.user.uid);
+            // console.log(data.user.uid);
 
             // redirect to home page
             // this.navCtrl.navigateRoot('home');
             
             this.dismiss();
-            this.router.navigate(['/tabs']);
+            this.router.navigate(['/tabs/tab2', {'user': 'useeeeeer'}]);
           })
           .catch();
       } catch (e) {

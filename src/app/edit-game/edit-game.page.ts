@@ -27,7 +27,7 @@ export class EditGamePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(`${this.gameId}`);
+    // console.log(`${this.gameId}`);
     this.id = this.gameId;
 
     this.getGameById(this.id);

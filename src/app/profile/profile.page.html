@@ -25,51 +25,70 @@
         </div>
     </div>
 
-    <ion-card>
-        <ion-item lines="none">
-            <ion-label>
-                <h2><b>Informational Info</b></h2>
-            </ion-label>
-        </ion-item>
-    </ion-card>
-    <ion-card>
-        <ion-item lines="none">
-            <ion-label>
-                <ion-grid>
-                    <ion-row>
-                        <ion-col>
-                            <h1>mohamed</h1>
-                        </ion-col>
-                        <ion-col>
-                            <h1>fouaz</h1>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-            </ion-label>
-        </ion-item>
-    </ion-card>
-
-    <div class="bg-img">
-
-        <ion-card class="adv-map">
-            <div style="position: relative">
-                <img src="../../assets/thenia.PNG" />
-                <ion-fab right top>
-                    <button ion-fab class="fab-map">
-            <ion-icon name="pin"></ion-icon>
-          </button>
-                </ion-fab>
-            </div>
-
-            <ion-item actions>
-                <span ion-text item-start color="secondary" class="item-bold">Thenia</span
-        >
-        <span ion-text item-start color="subtle">(boumerdes)</span>
-                <button slot="end" ion-button color="primary" clear item-end icon-start>
-          <ion-icon name="navigate"></ion-icon>
-          Position
-        </button>
+    <div>
+        <ion-card>
+            <ion-item lines="none" color="my-secondary">
+                <ion-label>
+                    <h2><b>Informational Info</b></h2>
+                </ion-label>
             </ion-item>
         </ion-card>
+        <ion-card>
+            <ion-item lines="none" color="my-secondary">
+                <ion-label>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <h1>uid : </h1>
+                            </ion-col>
+                            <ion-col>
+                                <h1>{{this.profile.uid}}</h1>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h1>email : </h1>
+                            </ion-col>
+                            <ion-col>
+                                <h1>{{this.profile.email}}</h1>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <h1>email erified : </h1>
+                            </ion-col>
+                            <ion-col>
+                                <h1>{{this.profile.emailVerified}}</h1>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-label>
+            </ion-item>
+        </ion-card>
+
+        <div class="bg-img">
+
+            <ion-card class="adv-map">
+                <div style="position: relative">
+                    <img src="../../assets/thenia.PNG" />
+                    <ion-fab right top>
+                        <button ion-fab class="fab-map">
+                <ion-icon name="pin"></ion-icon>
+              </button>
+                    </ion-fab>
+                </div>
+
+                <ion-item actions>
+                    <span ion-text item-start color="secondary" class="item-bold">Thenia</span
+            >
+            <span ion-text item-start color="subtle">(boumerdes)</span>
+                    <button slot="end" ion-button color="primary" clear item-end icon-start>
+              <ion-icon name="navigate"></ion-icon>
+              Position
+            </button>
+                </ion-item>
+            </ion-card>
+        </div>
     </div>
+
 </ion-content>

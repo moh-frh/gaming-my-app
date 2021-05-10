@@ -36,7 +36,7 @@ export class RegisterPage implements OnInit {
       // console.log(user);
 
       if (this.formValidation()) {
-        console.log('form is valid');
+        // console.log('form is valid');
 
         // show loader
         const loader = await this.loadingCtrl.create({
@@ -48,7 +48,7 @@ export class RegisterPage implements OnInit {
           // register user with email and password
           await this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
             .then(async data => {
-              console.log(data);
+              // console.log(data);
 
               // redirect to home page
               this.navCtrl.navigateRoot('home');

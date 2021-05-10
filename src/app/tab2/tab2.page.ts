@@ -31,7 +31,7 @@ export class Tab2Page {
   ) {}
 
   getCurrentUser(){
-    console.log(this.afAuth.currentUser);
+    // console.log(this.afAuth.currentUser);
      
   }
 
@@ -57,7 +57,7 @@ export class Tab2Page {
   async deleteMyGame(id: string) {
     // console.log(this.afAuth.currentUser.uid);
 
-    console.log(id);
+    // console.log(id);
 
     // show loader
     const loader = await this.loadingCtrl.create({

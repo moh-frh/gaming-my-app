@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TabsPage {
 
   constructor(private router: ActivatedRoute) {
-    console.log(this.router.snapshot.params.userId);
+    // console.log(this.router.snapshot.params.user);
     
   }
 
