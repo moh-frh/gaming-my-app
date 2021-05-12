@@ -26,7 +26,16 @@ export class EditGamePage implements OnInit {
     private navCtrl: NavController
   ) {}
 
+  getCurrentUserId() {
+    this.afAuth.authState.subscribe(data => {
+      this.game.user = data.uid
+    });
+  }
+  
   ngOnInit() {
+
+    this.getCurrentUserId()
+    
     // console.log(`${this.gameId}`);
     this.id = this.gameId;
 

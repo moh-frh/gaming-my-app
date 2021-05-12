@@ -4,6 +4,7 @@ import { Game } from '../models/game.model';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-add-game',
@@ -19,11 +20,21 @@ export class AddGamePage implements OnInit {
     private firestore: AngularFirestore,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
+    private navCtrl: NavController,
     private afAuth: AngularFireAuth,
-    private navCtrl: NavController
+    private afData: AngularFireDatabase
     ) { }
 
-  ngOnInit() {}
+    getCurrentUserId() {
+      this.afAuth.authState.subscribe(data => {
+        this.game.user = data.uid
+      });
+    }
+
+
+  ngOnInit() {
+    this.getCurrentUserId()
+  }
 
   async dismiss() {
     return await this.modalController.dismiss();

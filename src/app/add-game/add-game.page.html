@@ -2,17 +2,23 @@
 
 <ion-content class="ion-padding">
     <div class="title">
-        <h4>
-            <ion-text color="my-secondary">Add New Game</ion-text>
-        </h4>
-        <p>Enter Informations About The Game</p>
+        <b>
+            <h4>
+                <ion-text color="my-secondary">Add New Game</ion-text>
+            </h4>
+        </b>
+
+        <br>
+
+        <ion-text color="my-secondary">Enter Informations About The Game</ion-text>
+
     </div>
 
     <!-- <ion-input [(ngModel)]="game.name" placeholder="game name" class="primary-input"></ion-input> -->
-    <ion-item>
-        <ion-label>game</ion-label>
+    <ion-item color="white">
+        <ion-label color="my-secondary">game</ion-label>
         <ion-select [(ngModel)]="game.name" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="pubg">pubg zd
+            <ion-select-option value="pubg">pubg
                 <!-- <img src="https://i.pinimg.com/originals/a6/14/f4/a614f46898ef8c83420ae70e02258f0c.png" class="logo" /> -->
                 <!-- <ion-img width="20" height="20" src="https://i.pinimg.com/originals/a6/14/f4/a614f46898ef8c83420ae70e02258f0c.png"></ion-img> -->
             </ion-select-option>
@@ -22,7 +28,7 @@
     </ion-item>
     <!-- <ion-input [(ngModel)]="game.console" placeholder="console" class="primary-input"></ion-input> -->
     <ion-item>
-        <ion-label>console</ion-label>
+        <ion-label color="my-secondary">console</ion-label>
         <ion-select [(ngModel)]="game.console" okText="Okay" cancelText="Dismiss">
             <ion-select-option value="ps4">PS4</ion-select-option>
             <ion-select-option value="xbox">XBOX</ion-select-option>

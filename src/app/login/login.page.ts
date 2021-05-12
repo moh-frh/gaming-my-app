@@ -28,11 +28,7 @@ export class LoginPage implements OnInit {
 
   async login(user: User) {
 
-    // this.router.navigate(['/tabs']);
-
-
     if (this.formValidation()) {
-      // console.log("ready to submit");
 
       // show loader
       const loader = await this.loadingCtrl.create({
@@ -45,15 +41,9 @@ export class LoginPage implements OnInit {
         // login user with email and password
         await this.afAuth.signInWithEmailAndPassword(user.email, user.password)
           .then(data => {
-            // console.log("user auth");
-            
-            // console.log(data.user.uid);
-
-            // redirect to home page
-            // this.navCtrl.navigateRoot('home');
             
             this.dismiss();
-            this.router.navigate(['/tabs/tab2', {'user': 'useeeeeer'}]);
+            this.router.navigate(['/tabs/tab1']);
           })
           .catch();
       } catch (e) {

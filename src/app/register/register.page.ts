@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { User } from '../models/user.model';
 import { Tab1Page } from '../tab1/tab1.page';
@@ -18,7 +19,9 @@ export class RegisterPage implements OnInit {
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private afAuth: AngularFireAuth,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private router: Router,
+
     ) {}
 
   ngOnInit() {}
@@ -27,16 +30,10 @@ export class RegisterPage implements OnInit {
     return await this.modalController.dismiss();
   }
 
-    // const modal = await this.modalController.create({
-    //   component: Tab1Page,
-    // });
-    // return await modal.present();
-
     async register(user: User) {
       // console.log(user);
 
       if (this.formValidation()) {
-        // console.log('form is valid');
 
         // show loader
         const loader = await this.loadingCtrl.create({
@@ -50,13 +47,8 @@ export class RegisterPage implements OnInit {
             .then(async data => {
               // console.log(data);
 
-              // redirect to home page
-              this.navCtrl.navigateRoot('home');
-
-              const modal = await this.modalController.create({
-                component: Tab1Page,
-              });
-              return await modal.present();
+              this.dismiss();
+            this.router.navigate(['/tabs/tab1']);
 
             })
             .catch();

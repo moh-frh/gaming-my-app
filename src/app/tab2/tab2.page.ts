@@ -20,6 +20,8 @@ import { GamePage } from '../game/game.page';
 export class Tab2Page {
   games: any;
 
+  userId: any;
+
   constructor(
     public modalController: ModalController,
     private toastCtrl: ToastController,
@@ -27,12 +29,21 @@ export class Tab2Page {
     private loadingCtrl: LoadingController,
     private platform: Platform,
     private afAuth: AngularFireAuth,
-    private router: ActivatedRoute,
+    private router: ActivatedRoute
   ) {}
 
-  getCurrentUser(){
+  ngOnInit() {
+    this.afAuth.authState.subscribe((data) => {
+      this.userId = data.uid;
+
+      console.log('use id');
+
+      console.log(this.userId);
+    });
+  }
+
+  getCurrentUser() {
     // console.log(this.afAuth.currentUser);
-     
   }
 
   async openMovie() {
@@ -55,13 +66,9 @@ export class Tab2Page {
   }
 
   async deleteMyGame(id: string) {
-    // console.log(this.afAuth.currentUser.uid);
-
-    // console.log(id);
-
     // show loader
     const loader = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
     });
     loader.present();
 
@@ -73,6 +80,10 @@ export class Tab2Page {
   async getGames() {
     // console.log("get posts");
 
+    this.afAuth.authState.subscribe((data) => {
+      this.userId = data.uid;
+    });
+
     // show loader
     const loader = await this.loadingCtrl.create({
       message: 'Please wait...',
@@ -82,8 +93,10 @@ export class Tab2Page {
     try {
       this.firestore
         .collection('games')
+        // .doc(this.userId)
         .snapshotChanges()
         .subscribe((data) => {
+          // this.games = data.filter((e) => e.payload.doc.id === this.userId);
           this.games = data.map((e) => ({
             id: e.payload.doc.id,
             // eslint-disable-next-line @typescript-eslint/dot-notation
@@ -103,7 +116,6 @@ export class Tab2Page {
   }
 
   async editMyGame(id) {
-
     const modal = await this.modalController.create({
       component: EditGamePage,
       componentProps: {
