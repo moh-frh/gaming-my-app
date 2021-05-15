@@ -15,6 +15,8 @@ export class AddGamePage implements OnInit {
 
   game = {} as Game;
 
+  gameType;
+
   constructor(
     public modalController: ModalController,
     private firestore: AngularFirestore,
@@ -23,7 +25,9 @@ export class AddGamePage implements OnInit {
     private navCtrl: NavController,
     private afAuth: AngularFireAuth,
     private afData: AngularFireDatabase
-    ) { }
+    ) {
+    }
+
 
     getCurrentUserId() {
       this.afAuth.authState.subscribe(data => {
@@ -34,13 +38,31 @@ export class AddGamePage implements OnInit {
 
   ngOnInit() {
     this.getCurrentUserId()
+
+    console.log(this.gameType)
+
   }
 
   async dismiss() {
     return await this.modalController.dismiss();
   }
 
+  async handleButtonClick(msg) {
+    const toast = this.toastCtrl.create({
+      color: 'success',
+      duration: 2000,
+      message: msg,
+    });
+
+    await (await toast).present();
+  }
+
   async createGame(game: Game) {
+
+    console.log("type of gmae");
+    console.log(this.gameType);
+    
+    
 
     if (this.formValidation()) {
       // console.log("ready to submit");
@@ -52,7 +74,11 @@ export class AddGamePage implements OnInit {
       loader.present();
 
       try {
+        game.type = this.gameType
         await this.firestore.collection('games').add(game);
+
+        this.handleButtonClick('game added successfuly')
+        
       } catch (e) {
         this.showToast(e);
       }

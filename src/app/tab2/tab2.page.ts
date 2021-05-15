@@ -1,8 +1,10 @@
+import { Game } from './../models/game.model';
 import { Component, Input } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import {
+  AlertController,
   LoadingController,
   ModalController,
   Platform,
@@ -18,7 +20,7 @@ import { GamePage } from '../game/game.page';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  games: any;
+  games: any[];
 
   userId: any;
 
@@ -29,7 +31,9 @@ export class Tab2Page {
     private loadingCtrl: LoadingController,
     private platform: Platform,
     private afAuth: AngularFireAuth,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private alertCtrl: AlertController
+
   ) {}
 
   ngOnInit() {
@@ -56,6 +60,9 @@ export class Tab2Page {
   async addNewMyGame() {
     const modal = await this.modalController.create({
       component: AddGamePage,
+      componentProps: { 
+        gameType: 'my',
+      },
       animated: true,
       mode: 'ios',
       backdropDismiss: false,
@@ -63,6 +70,30 @@ export class Tab2Page {
     });
 
     return await modal.present();
+  }
+
+  presentConfirm(id: string) {
+    console.log("delete");
+    
+    this.alertCtrl.create({
+      // title: "Confirm purchase",
+      message: 'Do you want to buy this book?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Buy',
+          handler: () => {
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
   }
 
   async deleteMyGame(id: string) {
@@ -105,7 +136,12 @@ export class Tab2Page {
             console: e.payload.doc.data()['console'],
             // eslint-disable-next-line @typescript-eslint/dot-notation
             description: e.payload.doc.data()['description'],
-          }));
+            // eslint-disable-next-line @typescript-eslint/dot-notation
+            user: e.payload.doc.data()['user'],
+            type: e.payload.doc.data()['type'],
+          })).filter(elem => elem.user === this.userId && elem.type === 'my');
+
+          
 
           // dismiss loader
           loader.dismiss();
@@ -120,6 +156,7 @@ export class Tab2Page {
       component: EditGamePage,
       componentProps: {
         gameId: id,
+        gameType : 'my'
       },
       animated: true,
       mode: 'ios',

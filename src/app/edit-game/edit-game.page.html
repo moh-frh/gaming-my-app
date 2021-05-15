@@ -1,6 +1,4 @@
-<ion-header>
-
-</ion-header>
+<ion-header> </ion-header>
 
 <ion-content class="ion-padding">
     <div class="title">
@@ -12,10 +10,11 @@
         <p>{{game}}</p> -->
     </div>
 
+
+
     <ion-input [(ngModel)]="game.name" placeholder="game name" class="primary-input"></ion-input>
     <ion-input [(ngModel)]="game.console" placeholder="console" class="primary-input"></ion-input>
     <ion-input [(ngModel)]="game.description" placeholder="description" class="primary-input"></ion-input>
-
 
     <div class="ion-margin-top">
         <ion-button expand="block" color="my-secondary" (click)="editGame(game)">Save</ion-button>

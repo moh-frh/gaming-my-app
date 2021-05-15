@@ -1,6 +1,7 @@
-export interface Game {
+export class Game {
     name: string;
     console: string;
     description: string;
-    user: any;
+    type: string;
+    user: string;
 }

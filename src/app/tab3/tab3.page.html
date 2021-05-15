@@ -1,95 +1,69 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-button>
-                <ion-icon name="create-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-
+    <ion-toolbar color="my-primary">
         <ion-buttons slot="end">
-            <ion-button>
+            <ion-button color="my-secondary" (click)="addNewWishGame()">
+                <ion-button expand="block" class="ion-margin-top" color="my-secondary">Create</ion-button>
+
                 <ion-icon name="add-circle-outline"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 
-    <ion-toolbar>
-        <ion-title>Wish games</ion-title>
-    </ion-toolbar>
+    <!-- <ion-toolbar color="my-primary">
+        <ion-title color="my-secondary">My games</ion-title>
+    </ion-toolbar> -->
 
-    <ion-toolbar>
-        <ion-searchbar></ion-searchbar>
+    <ion-toolbar color="my-primary">
+        <ion-searchbar color="my-secondary" placeholder="enter game's name"></ion-searchbar>
     </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
     <ion-list>
-        <ion-icon name="filter-outline"></ion-icon>
+        <ion-list-header color="my-primary">
+            <ion-text color="my-secondary"> Wish Games </ion-text>
+        </ion-list-header>
 
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://www.journaldugeek.com/content/uploads/2020/04/call-of-duty-mobile-640x410.jpg" />
-            </ion-avatar>
-            <ion-label>
-                <h1>call of duty</h1>
-                <ion-icon name="location-outline"></ion-icon>
-                <span>boumerdes</span>
-                <div>
-                    <ion-icon name="logo-playstation"></ion-icon>
-                    <ion-icon name="logo-xbox"></ion-icon>
-                    <ion-icon name="laptop-outline"></ion-icon>
-                </div>
-            </ion-label>
-        </ion-item>
+        <ion-list lines="none">
+            <ion-list *ngFor="let game of games">
+                <ion-item lines="fullscreen" color="my-primary-grade1">
+                    <ion-avatar slot="start">
+                        <img src="https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg" />
+                    </ion-avatar>
+                    <ion-label color="my-secondary">
+                        <h1><b>{{ game.name }}</b></h1>
 
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg" />
-            </ion-avatar>
-            <ion-label>
-                <h1>pubg</h1>
-                <ion-icon name="location-outline"></ion-icon>
-                <span>alger</span>
-                <div>
-                    <ion-icon name="logo-playstation"></ion-icon>
-                    <ion-icon name="logo-xbox"></ion-icon>
-                    <ion-icon name="laptop-outline"></ion-icon>
-                </div>
-            </ion-label>
-        </ion-item>
+                        <div>
+                            <span *ngIf="game.console === 'xbox' ">
+                                <ion-icon name="logo-xbox"></ion-icon>
+                            </span>
 
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://www.legal-esport.com/imactus/csgo.jpg" />
-            </ion-avatar>
-            <ion-label>
-                <h1>cs go</h1>
-                <ion-icon name="location-outline"></ion-icon>
-                <span>tizi-ouzou</span>
-                <div>
-                    <ion-icon name="logo-playstation"></ion-icon>
-                    <ion-icon name="logo-xbox"></ion-icon>
-                    <ion-icon name="laptop-outline"></ion-icon>
-                </div>
-            </ion-label>
-        </ion-item>
+                            <span *ngIf="game.console === 'ps4' ">
+                                <ion-icon name="logo-playstation"></ion-icon>
+                            </span>
 
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://cdn2.unrealengine.com/14br-consoles-1920x1080-wlogo-1920x1080-432974386.jpg" />
-            </ion-avatar>
-            <ion-label>
-                <h1>fortnite</h1>
-                <ion-icon name="location-outline"></ion-icon>
-                <span>alger</span>
-                <div>
-                    <ion-icon name="logo-playstation"></ion-icon>
-                    <ion-icon name="logo-xbox"></ion-icon>
-                    <ion-icon name="laptop-outline"></ion-icon>
-                </div>
-            </ion-label>
-        </ion-item>
+                            <span *ngIf="game.console === 'pc' ">
+                                <ion-icon name="laptop-outline"></ion-icon>
+                            </span>
+
+                            <span>{{ game.console }}</span>
+                        </div>
+
+                        <span>{{ game.description }}</span>
+                    </ion-label>
+
+                    <ion-buttons slot="end">
+                        <ion-button color="my-secondary" (click)="deleteMyGame(game.id)">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                    <ion-buttons slot="end">
+                        <ion-button color="my-secondary" (click)="editMyGame(game.id)">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-item>
+            </ion-list>
+        </ion-list>
     </ion-list>
-
-
 </ion-content>

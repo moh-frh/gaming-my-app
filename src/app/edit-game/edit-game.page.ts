@@ -16,6 +16,7 @@ export class EditGamePage implements OnInit {
   gameId;
   id: any;
 
+  gameType;
 
   constructor(
     public modalController: ModalController,
@@ -33,6 +34,9 @@ export class EditGamePage implements OnInit {
   }
   
   ngOnInit() {
+
+    console.log(this.gameType);
+    
 
     this.getCurrentUserId()
     
@@ -100,6 +104,7 @@ showToast(message: string) {
       loader.present();
 
       try {
+        game.type = this.gameType
         await this.firestore.doc('games/' + this.id).update(game);
       } catch (e) {
         this.showToast(e);

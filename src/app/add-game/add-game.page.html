@@ -3,21 +3,17 @@
 <ion-content class="ion-padding">
     <div class="title">
         <b>
-            <h4>
+            <h1>
                 <ion-text color="my-secondary">Add New Game</ion-text>
-            </h4>
+            </h1>
         </b>
-
-        <br>
-
-        <ion-text color="my-secondary">Enter Informations About The Game</ion-text>
 
     </div>
 
     <!-- <ion-input [(ngModel)]="game.name" placeholder="game name" class="primary-input"></ion-input> -->
-    <ion-item color="white">
+    <ion-item>
         <ion-label color="my-secondary">game</ion-label>
-        <ion-select [(ngModel)]="game.name" okText="Okay" cancelText="Dismiss">
+        <ion-select [(ngModel)]="game.name" okText="Okay" cancelText="Dismiss" color='my-secondary'>
             <ion-select-option value="pubg">pubg
                 <!-- <img src="https://i.pinimg.com/originals/a6/14/f4/a614f46898ef8c83420ae70e02258f0c.png" class="logo" /> -->
                 <!-- <ion-img width="20" height="20" src="https://i.pinimg.com/originals/a6/14/f4/a614f46898ef8c83420ae70e02258f0c.png"></ion-img> -->
@@ -29,13 +25,21 @@
     <!-- <ion-input [(ngModel)]="game.console" placeholder="console" class="primary-input"></ion-input> -->
     <ion-item>
         <ion-label color="my-secondary">console</ion-label>
-        <ion-select [(ngModel)]="game.console" okText="Okay" cancelText="Dismiss">
+        <ion-select [(ngModel)]="game.console" okText="Okay" cancelText="Dismiss" color='my-secondary'>
             <ion-select-option value="ps4">PS4</ion-select-option>
             <ion-select-option value="xbox">XBOX</ion-select-option>
             <ion-select-option value="pc">PC</ion-select-option>
         </ion-select>
     </ion-item>
-    <ion-input [(ngModel)]="game.description" placeholder="description" class="primary-input"></ion-input>
+
+    <ion-list lines="full" class="ion-no-margin">
+        <ion-item>
+            <ion-label position="floating" color='my-secondary'>Description</ion-label>
+            <ion-input [(ngModel)]="game.description" color='my-secondary'></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <!-- <ion-input [(ngModel)]="game.description" placeholder="description" class="primary-input"></ion-input> -->
 
     <div class="ion-margin-top">
         <ion-button expand="block" color="my-secondary" (click)="createGame(game)">Create</ion-button>
