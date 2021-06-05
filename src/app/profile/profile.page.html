@@ -33,13 +33,13 @@
                 </ion-label>
             </ion-item>
         </ion-card>
-        <ion-card>
+        <!-- <ion-card>
             <ion-item lines="none" color="my-secondary">
                 <ion-label>
                     <h2><b>uid : {{this.profile.uid}}</b></h2>
                 </ion-label>
             </ion-item>
-        </ion-card>
+        </ion-card> -->
         <ion-card>
             <ion-item lines="none" color="my-secondary">
                 <ion-label>
@@ -48,12 +48,31 @@
             </ion-item>
         </ion-card>
         <ion-card>
-            <ion-item lines="none" color="my-secondary">
+            <!-- <ion-item lines="none" color="my-secondary">
                 <ion-label>
                     <h2><b>email verified : {{this.profile.emailVerified}}</b></h2>
                 </ion-label>
-            </ion-item>
+            </ion-item> -->
         </ion-card>
+        <ion-card>
+            <!-- <ion-item lines="none">
+                <ion-label>
+                    <ion-fab-button>
+                        <ion-icon name="add"></ion-icon>
+                    </ion-fab-button>
+                </ion-label>
+            </ion-item> -->
+            <ion-button (click)="addPhoto()" color="tertiary" expand="block">
+                <ion-icon name="image" slot="start"></ion-icon>
+                Ouvrir la bibliothèque
+            </ion-button>
+        </ion-card>
+
+        <div class="flex">
+            <div class="img-box">
+                <img [src]="image">
+            </div>
+        </div>
 
         <div class="bg-img">
             <ion-card class="adv-map">
