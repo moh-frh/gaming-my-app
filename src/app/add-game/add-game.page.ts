@@ -24,7 +24,6 @@ export class AddGamePage implements OnInit {
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     private afAuth: AngularFireAuth,
-    private afData: AngularFireDatabase
     ) {
     }
 

@@ -12,6 +12,7 @@ import { GamePageModule } from './game/game.module';
 //not auto import !!!!!!
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { Camera } from '@ionic-native/camera/ngx';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
     AngularFireAuthModule,
+    HttpClientModule,
   ],
   providers: [Camera,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

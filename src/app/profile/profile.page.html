@@ -62,9 +62,14 @@
                     </ion-fab-button>
                 </ion-label>
             </ion-item> -->
-            <ion-button (click)="addPhoto()" color="tertiary" expand="block">
+            <ion-button (click)="addPhoto('library')" color="tertiary" expand="block">
                 <ion-icon name="image" slot="start"></ion-icon>
                 Ouvrir la bibliothèque
+            </ion-button>
+
+            <ion-button (click)="addPhoto('camera')" color="secondary" expand="block">
+                <ion-icon name="camera" slot="start"></ion-icon>
+                Prendre une photo
             </ion-button>
         </ion-card>
 
@@ -73,6 +78,11 @@
                 <img [src]="image">
             </div>
         </div>
+
+        <ion-button (click)="uploadFirebase()" color="warning" expand="block">
+            <ion-icon name="cloud-upload" slot="start"></ion-icon>
+            Envoyer la photo
+        </ion-button>
 
         <div class="bg-img">
             <ion-card class="adv-map">
